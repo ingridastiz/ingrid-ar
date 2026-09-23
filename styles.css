@@ -103,7 +103,7 @@ section.block{margin-bottom:2.2rem;}
    NO pegada al borde de la pantalla. */
 .hero{
   display:grid;
-  grid-template-columns:1.05fr .95fr;
+  grid-template-columns:1fr auto;
   column-gap:3rem;
   max-width:1080px;margin:0 auto;padding:1.2rem 1.4rem;
   height:calc(100dvh - 68px);
@@ -116,7 +116,11 @@ section.block{margin-bottom:2.2rem;}
 .hero-text .lead{font-size:1.18rem;margin:.4rem 0 0;}
 .hero-text .btn{align-self:flex-start;margin-top:1.6rem;}
 .hero-photo{
-  position:relative;height:100%;min-height:0;min-width:0;
+  /* La caja toma la proporcion de la foto (1000x1278) para no recortar los costados */
+  position:relative;aspect-ratio:1000/1278;
+  height:100%;width:auto;
+  max-height:calc(min(100vw,1080px)*.46/(1000/1278)); /* que no pase del ~46% del ancho */
+  align-self:center;min-height:0;min-width:0;
   border-radius:14px;overflow:hidden;
   box-shadow:0 24px 60px -28px rgba(24,42,68,.55);
 }
@@ -125,7 +129,7 @@ section.block{margin-bottom:2.2rem;}
   display:block;
 }
 .photo-credit{
-  position:absolute;right:.7rem;bottom:.6rem;
+  position:absolute;left:.7rem;bottom:.6rem;
   font-family:"Inter",system-ui,sans-serif;font-size:.68rem;
   color:rgba(255,255,255,.8);text-shadow:0 1px 3px rgba(0,0,0,.5);
 }
@@ -220,7 +224,7 @@ span.en{display:none;}
   .hero-text h1{font-size:2rem;order:2;}
   .hero-text .lead{margin:0;order:4;}
   .hero-text .btn{justify-content:center;width:100%;margin-top:.4rem;order:5;align-self:stretch;}
-  .hero-photo{order:3;height:48vh;}
+  .hero-photo{order:3;height:48vh;width:100%;max-height:none;aspect-ratio:auto;}
   .hero-photo img{object-position:50% 20%;}
   body{font-size:17px;}
 }
