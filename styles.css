@@ -1,0 +1,231 @@
+/* ===========================================================
+   Ingrid · Sesiones creativas
+   Paleta: azules + único acento naranja
+   =========================================================== */
+:root{
+  --bg:#F5F3F2;
+  --dark:#182A44;
+  --blue:#5B86B8;
+  --neutral:#8B93A0;
+  --accent:#E8590C;
+  --dark-soft:rgba(24,42,68,.08);
+  --maxw:760px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--dark);
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size:18px;
+  line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* --------- Tipografía --------- */
+h1,h2,h3{
+  font-family:"Fraunces","Georgia",serif;
+  font-weight:500;
+  line-height:1.15;
+  color:var(--dark);
+  letter-spacing:-.01em;
+}
+h1{font-size:clamp(2rem,5vw,3.15rem);margin:0 0 .6em;}
+h2{font-size:clamp(1.5rem,3.4vw,2.15rem);margin:0 0 .5em;}
+p{margin:0 0 1.15em;}
+a{color:var(--blue);text-decoration:none;}
+a:hover{color:var(--accent);}
+.muted{color:var(--neutral);}
+strong{font-weight:600;}
+
+/* --------- Header / Nav --------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(245,243,242,.86);
+  backdrop-filter:saturate(150%) blur(10px);
+  border-bottom:1px solid var(--dark-soft);
+}
+.nav{
+  max-width:1080px;margin:0 auto;
+  display:flex;align-items:center;gap:1rem;
+  padding:.85rem 1.4rem;
+  flex-wrap:wrap;
+}
+.brand{
+  font-family:"Fraunces",serif;font-size:1.35rem;font-weight:600;
+  color:var(--dark);letter-spacing:-.02em;white-space:nowrap;
+}
+.brand span{color:var(--accent);}
+.nav-links{
+  display:flex;gap:.35rem;flex-wrap:wrap;align-items:center;
+  margin-left:auto;
+}
+.nav-links a{
+  color:var(--dark);font-size:.95rem;font-weight:500;
+  padding:.35rem .7rem;border-radius:999px;
+  transition:background .2s,color .2s;
+}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a.active{color:var(--accent);}
+.nav-links a.active::after{
+  content:"";display:block;height:2px;border-radius:2px;
+  background:var(--accent);margin-top:2px;
+}
+/* language toggle */
+.lang-toggle{
+  display:inline-flex;border:1px solid var(--dark-soft);
+  border-radius:999px;overflow:hidden;margin-left:.4rem;
+  font-size:.82rem;
+}
+.lang-toggle button{
+  border:0;background:transparent;cursor:pointer;
+  padding:.3rem .7rem;color:var(--neutral);font-weight:600;
+  font-family:inherit;letter-spacing:.03em;
+}
+.lang-toggle button.on{background:var(--dark);color:var(--bg);}
+
+/* --------- Layout --------- */
+main{max-width:var(--maxw);margin:0 auto;padding:3.4rem 1.4rem 2rem;}
+.wide{max-width:1080px;}
+section.block{margin-bottom:2.2rem;}
+.eyebrow{
+  text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;
+  font-weight:600;color:var(--blue);margin:0 0 1rem;
+}
+
+/* --------- Home hero --------- */
+/* Escritorio: todo el hero entra en la primera vista, sin scroll.
+   Dos columnas dentro del mismo contenedor de 1080px que el resto del
+   sitio: texto a la izquierda (centrado verticalmente), foto a la
+   derecha, en una tarjeta con esquinas redondeadas y sombra suave —
+   NO pegada al borde de la pantalla. */
+.hero{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  column-gap:3rem;
+  max-width:1080px;margin:0 auto;padding:1.2rem 1.4rem;
+  height:calc(100dvh - 68px);
+}
+.hero-text{
+  display:flex;flex-direction:column;justify-content:center;min-width:0;
+}
+.hero-text .eyebrow{margin-bottom:.9rem;}
+.hero-text h1{font-size:clamp(1.7rem,3.2vw,2.6rem);}
+.hero-text .lead{font-size:1.18rem;margin:.4rem 0 0;}
+.hero-text .btn{align-self:flex-start;margin-top:1.6rem;}
+.hero-photo{
+  position:relative;height:100%;min-height:0;min-width:0;
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 24px 60px -28px rgba(24,42,68,.55);
+}
+.hero-photo img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 20%;
+  display:block;
+}
+.photo-credit{
+  position:absolute;right:.7rem;bottom:.6rem;
+  font-family:"Inter",system-ui,sans-serif;font-size:.68rem;
+  color:rgba(255,255,255,.8);text-shadow:0 1px 3px rgba(0,0,0,.5);
+}
+
+/* --------- Botones --------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:var(--accent);color:#fff;
+  padding:.8rem 1.4rem;border-radius:999px;
+  font-weight:600;font-size:1rem;
+  transition:transform .15s,box-shadow .2s,background .2s;
+  box-shadow:0 10px 24px -12px rgba(232,89,12,.7);
+}
+.btn:hover{color:#fff;background:#cf4f0a;transform:translateY(-2px);}
+.btn svg{width:1.05em;height:1.05em;fill:currentColor;}
+.btn-outline{
+  background:transparent;color:var(--dark);
+  border:1.5px solid var(--dark);box-shadow:none;
+}
+.btn-outline:hover{background:var(--dark);color:var(--bg);}
+.btn-outline svg{fill:currentColor;}
+
+/* --------- Notas / avisos --------- */
+.note{
+  border-left:3px solid var(--blue);
+  background:rgba(91,134,184,.07);
+  padding:.9rem 1.15rem;border-radius:0 10px 10px 0;
+  font-size:.98rem;color:var(--dark);margin:1.4rem 0;
+}
+.callout{
+  background:#fff;border:1px solid var(--dark-soft);
+  border-radius:14px;padding:1.6rem 1.5rem;margin:1.6rem 0;
+}
+/* formas de pago */
+.pay{
+  margin:1.2rem 0 0;padding-top:1rem;
+  border-top:1px solid var(--dark-soft);
+  color:var(--neutral);font-size:.95rem;line-height:1.7;
+}
+.pay-label{
+  display:block;color:var(--dark);font-weight:600;
+  font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;
+  margin-bottom:.35rem;
+}
+
+ul.clean{list-style:none;padding:0;margin:0 0 1.15em;}
+ul.clean li{
+  position:relative;padding-left:1.4rem;margin-bottom:.5rem;
+}
+ul.clean li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:7px;height:7px;border-radius:50%;background:var(--accent);
+}
+
+/* --------- Footer --------- */
+footer{
+  border-top:1px solid var(--dark-soft);
+  margin-top:3rem;padding:2rem 1.4rem;
+  text-align:center;color:var(--neutral);font-size:.9rem;
+}
+footer a{color:var(--neutral);font-weight:400;text-decoration:none;}
+footer a:hover{color:var(--accent);}
+footer .sep{margin:0 .5rem;opacity:.5;}
+/* las tres líneas del pie, todas iguales */
+.foot-line{margin:.3rem 0;line-height:1.6;font-size:.9rem;font-weight:400;}
+
+/* --------- Páginas legales --------- */
+.legal{font-size:1rem;color:#2b3a52;}
+.legal h1{margin-bottom:.8rem;}
+.legal h2{font-size:1.3rem;margin:2rem 0 .5rem;}
+.legal p{margin:0 0 1em;}
+
+/* --------- Idiomas --------- */
+.en{display:none;}
+body.lang-en .es{display:none;}
+body.lang-en .en{display:block;}
+body.lang-en span.en{display:inline;}
+span.en{display:none;}
+
+/* --------- Responsive --------- */
+@media(max-width:820px){
+  /* Móvil: se apilan. Orden: etiqueta → titular → foto → subtítulo → botón.
+     Acá sí se permite scroll. */
+  .hero{
+    display:flex;flex-direction:column;
+    row-gap:1.1rem;
+    height:auto;
+    padding:1.5rem 1.4rem 1rem;
+  }
+  .hero-text{display:contents;}
+  .hero-text .eyebrow{order:1;}
+  .hero-text h1{font-size:2rem;order:2;}
+  .hero-text .lead{margin:0;order:4;}
+  .hero-text .btn{justify-content:center;width:100%;margin-top:.4rem;order:5;align-self:stretch;}
+  .hero-photo{order:3;height:48vh;}
+  .hero-photo img{object-position:50% 20%;}
+  body{font-size:17px;}
+}
+@media(max-width:560px){
+  .nav{padding:.7rem 1rem;}
+  .nav-links{width:100%;margin-left:0;justify-content:flex-start;}
+  .brand{width:100%;}
+}
